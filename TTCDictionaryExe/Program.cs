@@ -22,8 +22,9 @@ namespace TTCDictionaryExe
             TestDic.When_checking_a_word_which_does_not_exist_should_return_false();
             TestDic.When_checking_a_word_which_does_exist_should_return_true();
             Console.WriteLine("Search scenarios...");
-            //TestDic.When_searching_a_word_which_exist_should_return_the_word();
-            //TestDic.When_searching_a_word_which_does_not_exist_should_return_Empty();
+            TestDic.When_searching_a_word_which_exist_in_Words_should_return_the_word();
+            TestDic.When_searching_a_word_which_exist_in_Language_should_return_the_word();
+            TestDic.When_searching_a_word_which_does_not_exist_should_return_Empty();
             Console.Read();
         }
     }
