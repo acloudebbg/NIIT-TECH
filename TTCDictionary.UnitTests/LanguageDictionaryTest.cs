@@ -32,12 +32,7 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Add(lang, word);
 
             // Assert.
-            // Assert.IsTrue(result);
-            Console.WriteLine(" When_adding_a_word_which_does_not_exist_should_return_true ");
-            Console.Write(" Add in lang: {0:S} ",lang);
-            Console.Write(" the word: {0:S}  --> ", word);
-            Console.WriteLine(result);
-
+            Assert.IsTrue(result);
 
             var listCheck = this.list.FirstOrDefault(i => i.Key == lang && i.Value == word);
 
@@ -57,11 +52,7 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Add("English", word);
 
             // Assert.
-            // Assert.IsFalse(result);
-            Console.WriteLine(" When_adding_a_word_which_does_exist_should_return_false ");
-            Console.Write(" Add in lang: English");
-            Console.Write(" the word: {0:S}  --> ", word);
-            Console.WriteLine(result);
+            Assert.IsFalse(result);
         }
 
         [Test]
@@ -75,11 +66,8 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Add("German", word);
 
             // Assert.
-            // Assert.IsTrue(result);
-            Console.WriteLine(" When_adding_a_word_which_does_exist_in_a_different_language_return_true ");
-            Console.Write(" Add in lang: German");
-            Console.Write(" the word: {0:S}  --> ", word);
-            Console.WriteLine(result);
+            Assert.IsTrue(result);
+
         }
 
         [Test]
@@ -94,11 +82,7 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Check("English", newword);
 
             // Assert.
-            // Assert.IsFalse(result);
-            Console.WriteLine(" When_checking_a_word_which_does_not_exist_should_return_false ");
-            Console.Write(" Checked lang: English");
-            Console.Write(" Checked word: {0:S}  --> ", newword);
-            Console.WriteLine(result);
+            Assert.IsFalse(result);
 
         }
 
@@ -113,16 +97,12 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Check("English", word);
 
             // Assert.
-            // Assert.IsTrue(result);
-            Console.WriteLine(" When_checking_a_word_which_does_exist_should_return_true ");
-            Console.Write(" Checked lang: English");
-            Console.Write(" Checked word: {0:S}  --> ", word);
-            Console.WriteLine(result);
+            Assert.IsTrue(result);
 
         }
 
         [Test]
-        public void When_searching_a_word_which_exist_should_return_the_word()
+        public void When_searching_a_word_which_exist_in_Words_should_return_the_word()
         {
             // The method expect a search in all keys and values
             // Arrange.
@@ -133,12 +113,24 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Search(word);
 
             // Assert.
-            // Assert.IsTrue(result);
-            Console.Write(" When_searching_a_word_which_exist_should_return_the_word ");
-            Console.Write(" Searched word: {0:S}  --> ", word);
-            Console.WriteLine(result);
+            //Assert.IsEmpty(result);
         }
 
+        [Test]
+        public void When_searching_a_word_which_exist_in_Language_should_return_the_word()
+        {
+            // The method expect a search in all keys and values
+            // Arrange.
+            var word = "test";
+            this.SUT.Add("English", word);
+
+            // Act.
+            var result = this.SUT.Search("English");
+
+            // Assert.
+            //Assert.IsEmpty(result);
+
+        }
         [Test]
         public void When_searching_a_word_which_does_not_exist_should_return_Empty()
         {
@@ -152,10 +144,8 @@ namespace TTCDictionary.UnitTests
             var result = this.SUT.Search(wordsearch);
 
             // Assert.
-            // Assert.IsTrue(result);
-             Console.Write(" When_searching_a_word_which_does_not_exist_should_return_Empty ");
-             Console.Write(" Searched word: {0:S}  --> ", wordsearch);
-             Console.WriteLine(result);
+            //Assert.IsEmpty(result);
+
         }
 
     }
