@@ -44,8 +44,16 @@ namespace TTCDictionary
 
         public IEnumerable<string> Search(string word)
         {
+            IEnumerable<string> DictionaryEntryResult = new List<string>() {};
+
             // The method expect to search in all keys and values
-            throw new NotImplementedException();
+
+            if (this.list.ContainsKey(word) || this.list.ContainsValue(word))
+            {
+                DictionaryEntryResult = DictionaryEntryResult.Concat(new[] { word });
+            }
+
+            return DictionaryEntryResult;
         }
     }
 }
